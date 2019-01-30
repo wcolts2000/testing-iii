@@ -16,4 +16,20 @@ describe("<Display />", () => {
       expect(gate).toHaveTextContent(/open/i);
     });
   });
+  describe("the gate cant be opened or closed when the lock is active", () => {
+    it("gate has a class of green-led when the lock is locked", async () => {
+      const { getByTestId } = await render(<Display locked="true" />);
+      const gate = getByTestId("gate");
+
+      expect(gate).toHaveClass("green-led");
+    });
+  });
+  describe("the gate cant be locked when it is open", () => {
+    it("lock has a class of green-led when the gate is open", async () => {
+      const { getByTestId } = await render(<Display closed="false" />);
+      const lock = getByTestId("lock");
+
+      expect(lock).toHaveClass("green-led");
+    });
+  });
 });
