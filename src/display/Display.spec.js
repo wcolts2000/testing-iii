@@ -32,4 +32,16 @@ describe("<Display />", () => {
       expect(lock).toHaveClass("green-led");
     });
   });
+  describe("uses red-led appropriately", () => {
+    it("uses the class red-led on the locked or closed states", async () => {
+      const { getByTestId } = await render(
+        <Display closed={true} locked={true} />
+      );
+      const lock = getByTestId("lock");
+      const gate = getByTestId("gate");
+
+      expect(lock).toHaveClass("red-led");
+      expect(gate).toHaveClass("red-led");
+    });
+  });
 });
