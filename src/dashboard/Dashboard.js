@@ -1,19 +1,18 @@
-import React from 'react';
-
-import Display from '../display/Display';
-import Controls from '../controls/Controls';
+import React from "react";
+import Controls from "../controls/Controls";
+import Display from "../display/Display";
 
 class Dashboard extends React.Component {
   state = {
     locked: false,
-    closed: false,
+    closed: false
   };
 
   render() {
     const { closed, locked } = this.state;
 
     return (
-      <>
+      <div>
         <Display locked={locked} closed={closed} />
         <Controls
           locked={locked}
@@ -21,7 +20,7 @@ class Dashboard extends React.Component {
           toggleLocked={this.toggleLocked}
           toggleClosed={this.toggleClosed}
         />
-      </>
+      </div>
     );
   }
 
